@@ -18,6 +18,16 @@ BetterUnsubscribe offers several unsubscription methods based on what is availab
 3. **Unsubscribe via Web** _(RFC 2369)_: If a `List-Unsubscribe` web link (`https://`) is provided in the header, the site is opened in your browser.
 4. **Unsubscribe Link in Email Content**: If an unsubscribe link (`https://`) is embedded in the email content, the site is opened in your browser.
 
+## Permissions
+
+- `accountsRead` Required to list accounts, folders, and identities for matching the correct sending identity when unsubscribing via email, and for searching messages across all inboxes when deleting by domain.
+- `messagesRead` Required to read message headers and body content in order to detect and extract unsubscribe links and methods.
+- `messagesDelete` Required to delete messages when the user chooses to delete one or all messages from a sender or domain.
+- `compose` Required to open a compose window when unsubscribing via a mailto: link.
+- `compose.send` Required to send the unsubscribe email without user intervention when unsubscribing via a mailto: link.
+- `https://*/*` Required to make POST requests to arbitrary unsubscribe URLs when using the one-click unsubscribe method.
+- `http://*/*` As above, for unsubscribe URLs that use plain HTTP rather than HTTPS.
+
 ## Download
 
 You can download the latest version of BetterUnsubscribe [here](https://github.com/LucBennett/BetterUnsubscribe/releases/latest).

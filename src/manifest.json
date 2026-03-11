@@ -14,10 +14,8 @@
     "accountsRead",
     "messagesRead",
     "messagesDelete",
-    "messagesMove",
     "compose",
     "compose.send",
-    "theme",
     "https://*/*",
     "http://*/*"
   ],
