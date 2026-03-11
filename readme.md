@@ -20,13 +20,26 @@ BetterUnsubscribe offers several unsubscription methods based on what is availab
 
 ## Permissions
 
-- `accountsRead` Required to list accounts, folders, and identities for matching the correct sending identity when unsubscribing via email, and for searching messages across all inboxes when deleting by domain.
-- `messagesRead` Required to read message headers and body content in order to detect and extract unsubscribe links and methods.
-- `messagesDelete` Required to delete messages when the user chooses to delete one or all messages from a sender or domain.
-- `compose` Required to open a compose window when unsubscribing via a mailto: link.
-- `compose.send` Required to send the unsubscribe email without user intervention when unsubscribing via a mailto: link.
-- `https://*/*` Required to make POST requests to arbitrary unsubscribe URLs when using the one-click unsubscribe method.
-- `http://*/*` As above, for unsubscribe URLs that use plain HTTP rather than HTTPS.
+When installing BetterUnsubscribe, Thunderbird will ask you to grant the following
+permissions. Here is why each one is needed:
+
+| Permission       | Reason                                                                                                                                                                         |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `accountsRead`   | Lists accounts, folders, and identities to match the correct sending identity when unsubscribing via email, and to search messages across all inboxes when deleting by domain. |
+| `messagesRead`   | Reads message headers and body content to detect and extract unsubscribe links and methods.                                                                                    |
+| `messagesDelete` | Deletes messages when the user chooses to delete one or all messages from a sender or domain.                                                                                  |
+| `compose`        | Opens a compose window when unsubscribing via a `mailto:` link.                                                                                                                |
+| `compose.send`   | Sends the unsubscribe email automatically when unsubscribing via a `mailto:` link.                                                                                             |
+
+### Host Permissions
+
+BetterUnsubscribe also requires access to external URLs in order to send one-click
+unsubscribe requests. Thunderbird will display these as "Access your data for all websites".
+
+| Permission    | Reason                                                                                  |
+| ------------- | --------------------------------------------------------------------------------------- |
+| `https://*/*` | Makes POST requests to arbitrary unsubscribe URLs for one-click unsubscribe (RFC 8058). |
+| `http://*/*`  | As above, for the rare case where an unsubscribe URL uses plain HTTP rather than HTTPS. |
 
 ## Download
 
