@@ -68,20 +68,44 @@ document.addEventListener('DOMContentLoaded', async () => {
   let name = undefined;
   let sender = undefined;
   let domain = undefined;
-  // Todo: Replace regex parsing with parseMailboxString
-  //  https://webextension-api.thunderbird.net/en/latest/messengerUtilities.html
-  // Regex to match and parse email addresses with optional name prefix.
-  const addressRegex = new RegExp(
-    '^("?([^"\\n]*)"?[\\t ]+)?<?("[^"\\n]*"|[^@\\s]+)@(\\S+\\.[a-zA-Z]{2,})>?$'
-  );
-  const match = author.match(addressRegex);
-  if (match) {
-    name = match[2] || ''; // Optional name fallback if not present.
-    sender = match[3];
-    domain = match[4];
-    console_log(`Name: ${name}, Sender: ${sender}, Domain: ${domain}`);
-  } else {
-    console_error(`Invalid email format: ${author}`);
+
+  // Use parseMailboxString (available since TB 137) to parse the author field.
+  // https://webextension-api.thunderbird.net/en/latest/messengerUtilities.html
+  if (messenger.messengerUtilities?.parseMailboxString) {
+    try {
+      const parsed =
+        await messenger.messengerUtilities.parseMailboxString(author);
+      if (parsed?.length > 0) {
+        const { name: parsedName, email } = parsed[0];
+        name = parsedName || '';
+        if (email) {
+          const atIndex = email.lastIndexOf('@');
+          if (atIndex !== -1) {
+            sender = email.substring(0, atIndex);
+            domain = email.substring(atIndex + 1);
+          }
+        }
+        console_log(`Name: ${name}, Sender: ${sender}, Domain: ${domain}`);
+      }
+    } catch (e) {
+      console_error('parseMailboxString failed, falling back to regex', e);
+    }
+  }
+
+  // Fallback: regex parsing for compatibility with TB < 137.
+  if (sender === undefined) {
+    const addressRegex = new RegExp(
+      '^("?([^"\\n]*)"?[\\t ]+)?<?("[^"\\n]*"|[^@\\s]+)@(\\S+\\.[a-zA-Z]{2,})>?$'
+    );
+    const match = author.match(addressRegex);
+    if (match) {
+      name = match[2] || ''; // Optional name fallback if not present.
+      sender = match[3];
+      domain = match[4];
+      console_log(`Name: ${name}, Sender: ${sender}, Domain: ${domain}`);
+    } else {
+      console_error(`Invalid email format: ${author}`);
+    }
   }
 
   // Display the author's email in the UI.
