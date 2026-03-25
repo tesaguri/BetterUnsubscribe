@@ -900,7 +900,14 @@ async function handleDelete(messageFromPopup) {
 
     if (messageIds.length) {
       console_log('Deleting Selected Messages');
-      await messenger.messages.delete(messageIds, false);
+      try {
+        await messenger.messages.delete(messageIds, {
+          deletePermanently: false, // [Added in TB 137]
+        });
+      } catch (err) {
+        // Fallback for older versions of Thunderbird
+        await messenger.messages.delete(messageIds, false);
+      }
       return { response: 'Deleted', count: messageIds.length };
     }
 
