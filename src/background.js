@@ -689,6 +689,21 @@ class UnsubMail extends UnsubMethod {
 
     const composeTab = await messenger.compose.beginNew(details);
 
+    // Wait until Thunderbird says this compose window can actually send.
+    for (let i = 0; i < 30; i++) {
+      // 3 seconds
+      const state = await messenger.compose.getComposeState(composeTab.id);
+      if (state?.canSendNow) {
+        break;
+      }
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
+
+    const state = await messenger.compose.getComposeState(composeTab.id);
+    if (!state?.canSendNow) {
+      throw new Error('Compose window did not become sendable.');
+    }
+
     const sendMessageResult = await messenger.compose.sendMessage(
       composeTab.id,
       { mode: 'sendNow' }
