@@ -1,4 +1,10 @@
-import { DEFAULT_SETTINGS } from './options';
+/**
+ * Default settings for BetterUnsubscribe
+ */
+const DEFAULT_SETTINGS = {
+  autoSendEmail: false, // Don't automatically send emails by default
+  confirmRules: [], // No confirmation rules by default
+};
 
 /**
  * Map to store functions for different unsubscribe actions associated with message IDs
@@ -40,7 +46,7 @@ function console_error() {
  * Notes:
  * - The tab activation event can fire even when no message is displayed; `updateAction`
  *   safely handles a null/undefined message.
- * - This exists alongside `onMessageDisplayed` because tab focus changes don’t always
+ * - This exists alongside `onMessageDisplayed` because tab focus changes don't always
  *   imply a new message display event, and vice versa.
  *
  * @param {object} activeInfo - Activation details from `messenger.tabs.onActivated`.
@@ -83,7 +89,7 @@ messenger.messageDisplay.onMessageDisplayed.addListener(
 /**
  * Evaluates the currently displayed message and updates the messageDisplayAction state.
  *
- * This is the central "gatekeeper" for enabling/disabling the extension’s action button.
+ * This is the central "gatekeeper" for enabling/disabling the extension's action button.
  *
  * Flow:
  * 1) Immediately disables the action button for the current tab to prevent the user
@@ -748,7 +754,7 @@ class UnsubWeb extends UnsubMethod {
   }
 
   /**
-   * Executes the unsubscribe action by opening the sender’s
+   * Executes the unsubscribe action by opening the sender's
    * unsubscribe web page in a popup browser window.
    *
    * This follows the RFC 2369 "List-Unsubscribe" web-link mechanism.

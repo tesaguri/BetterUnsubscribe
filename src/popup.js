@@ -1,4 +1,12 @@
 /**
+ * Default settings for BetterUnsubscribe
+ */
+const DEFAULT_SETTINGS = {
+  autoSendEmail: false, // Don't automatically send emails by default
+  confirmRules: [], // No confirmation rules by default
+};
+
+/**
  * Logs messages to the console with a custom prefix for better identification.
  * Used for debug and informational messages related to BetterUnsubscribe's popup.js.
  * @param {...any} args - The arguments to log to the console.
@@ -53,6 +61,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   deleteDiv.addEventListener('mouseenter', resize_dropdown);
   window.addEventListener('resize', resize_dropdown);
 
+  const settings = await messenger.storage.local.get(DEFAULT_SETTINGS);
+  console_log('Loaded settings:', settings);
+
   // Retrieve the currently active tab in the current window and get displayed message details.
   const [tab] = await messenger.tabs.query({
     active: true,
@@ -68,6 +79,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   let name = undefined;
   let sender = undefined;
   let domain = undefined;
+
+  // Populated once the getMethod response arrives; used for confirmation rule matching.
+  let unsubAddress = null;
 
   // Use parseMailboxString (available since TB 137) to parse the author field.
   // https://webextension-api.thunderbird.net/en/latest/messengerUtilities.html
@@ -130,6 +144,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     .sendMessage({ messageId: message.id, getMethod: true })
     .then((r) => {
       console_log('Received', r);
+      unsubAddress = r.address || null;
 
       // Update the UI based on the received unsubscribe method (Post, Email, or Browser).
       switch (r.method) {
@@ -163,15 +178,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
   /**
-   * Event listener for the "Unsubscribe" button.
-   * Sends an unsubscribe request to the background script, updates UI status, and handles button state.
+   * Sends the unsubscribe request to the background script and updates UI status.
    */
-  unsubscribeButton.addEventListener('click', async () => {
+  async function doUnsubscribe() {
     unsubscribeButton.disabled = true;
     statusText.removeAttribute('hidden');
     statusText.textContent = messenger.i18n.getMessage('statusTextWorking');
 
-    // Send unsubscribe request to the background script.
     messenger.runtime
       .sendMessage({ messageId: message.id, unsubscribe: true })
       .then((r) => {
@@ -190,6 +203,51 @@ document.addEventListener('DOMContentLoaded', async () => {
         console_error('Error sending unsubscribe message:', error);
         statusText.textContent = messenger.i18n.getMessage('statusTextError');
       });
+  }
+
+  /**
+   * Event listener for the "Unsubscribe" button.
+   * Checks confirmation rules first; if a rule matches, shows the confirmation
+   * section instead of unsubscribing immediately.
+   */
+  unsubscribeButton.addEventListener('click', async () => {
+    const rules = Array.isArray(settings.confirmRules)
+      ? settings.confirmRules
+      : [];
+    const matchedRule = findMatchingRule(rules, author, unsubAddress);
+
+    if (matchedRule) {
+      document.getElementById('confirmWarning').textContent =
+        matchedRule.description ||
+        messenger.i18n.getMessage('confirmUnsubscribeWarning');
+      document.getElementById('confirmTarget').textContent =
+        unsubAddress || author;
+      document.getElementById('unsubSection').hidden = true;
+      document.getElementById('confirmSection').hidden = false;
+      return;
+    }
+
+    await doUnsubscribe();
+  });
+
+  /**
+   * Event listener for the "Yes, Unsubscribe" button in the confirmation section.
+   */
+  document
+    .getElementById('confirmYesButton')
+    .addEventListener('click', async () => {
+      document.getElementById('confirmSection').hidden = true;
+      document.getElementById('unsubSection').hidden = false;
+      await doUnsubscribe();
+    });
+
+  /**
+   * Event listener for the "Cancel" button in the confirmation section.
+   * Returns to the main unsubscribe view without taking action.
+   */
+  document.getElementById('confirmNoButton').addEventListener('click', () => {
+    document.getElementById('confirmSection').hidden = true;
+    document.getElementById('unsubSection').hidden = false;
   });
 
   /**
@@ -263,6 +321,28 @@ document.addEventListener('DOMContentLoaded', async () => {
     )
   );
 });
+
+/**
+ * Finds the first confirmation rule whose regex matches the sender or unsubscribe address.
+ * @param {{regex: string, description: string}[]} rules
+ * @param {string} author - Sender string from the message header.
+ * @param {string|null} address - Unsubscribe URL or email address, if known.
+ * @returns {{regex: string, description: string}|null}
+ */
+function findMatchingRule(rules, author, address) {
+  for (const rule of rules) {
+    if (!rule.regex) continue;
+    try {
+      const re = new RegExp(rule.regex, 'i');
+      if ((author && re.test(author)) || (address && re.test(address))) {
+        return rule;
+      }
+    } catch (e) {
+      // Skip rules with invalid regex
+    }
+  }
+  return null;
+}
 
 /**
  * Generates a function to handle deleting specific messages or message groups based on input parameters.

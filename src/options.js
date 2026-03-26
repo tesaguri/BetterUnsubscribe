@@ -1,9 +1,9 @@
 /**
  * Default settings for BetterUnsubscribe
  */
-export const DEFAULT_SETTINGS = {
+const DEFAULT_SETTINGS = {
   autoSendEmail: false, // Don't automatically send emails by default
-  confirmRegex: '', // No confirmation regex by default
+  confirmRules: [], // No confirmation rules by default
 };
 
 /**
@@ -42,6 +42,85 @@ function validateRegex(pattern) {
 }
 
 /**
+ * Renders the rules list from an array of {regex, description} objects.
+ * @param {{regex: string, description: string}[]} rules
+ */
+function renderRules(rules) {
+  const list = document.getElementById('rulesList');
+  list.innerHTML = '';
+  rules.forEach((rule) => {
+    list.appendChild(createRuleRow(rule.regex, rule.description));
+  });
+  updateEmptyState();
+}
+
+/**
+ * Creates a single rule row DOM element.
+ * @param {string} [regex=''] - The regex pattern value.
+ * @param {string} [description=''] - The warning message value.
+ * @returns {HTMLDivElement}
+ */
+function createRuleRow(regex = '', description = '') {
+  const row = document.createElement('div');
+  row.className = 'rule-row';
+
+  const regexInput = document.createElement('input');
+  regexInput.type = 'text';
+  regexInput.className = 'rule-regex';
+  regexInput.placeholder = 'e.g. groups\\.google\\.com';
+  regexInput.value = regex;
+  regexInput.addEventListener('input', () => {
+    const v = validateRegex(regexInput.value.trim());
+    const invalid = !v.valid && regexInput.value.trim() !== '';
+    regexInput.style.borderColor = invalid ? 'red' : '';
+    regexInput.title = invalid ? `Invalid regex: ${v.error}` : '';
+  });
+
+  const descInput = document.createElement('input');
+  descInput.type = 'text';
+  descInput.className = 'rule-description';
+  descInput.placeholder = 'Warning shown in confirmation dialog (optional)';
+  descInput.value = description;
+
+  const removeBtn = document.createElement('button');
+  removeBtn.type = 'button';
+  removeBtn.className = 'button-remove';
+  removeBtn.textContent = '×';
+  removeBtn.setAttribute('aria-label', 'Remove rule');
+  removeBtn.addEventListener('click', () => {
+    row.remove();
+    updateEmptyState();
+  });
+
+  row.appendChild(regexInput);
+  row.appendChild(descInput);
+  row.appendChild(removeBtn);
+  return row;
+}
+
+/**
+ * Shows or hides the empty state message and column headers based on whether any rules exist.
+ */
+function updateEmptyState() {
+  const hasRules = document.querySelectorAll('.rule-row').length > 0;
+  document.getElementById('rulesEmpty').hidden = hasRules;
+  document.getElementById('rulesHeader').hidden = !hasRules;
+}
+
+/**
+ * Collects the current rules from the DOM.
+ * @returns {{regex: string, description: string}[]}
+ */
+function collectRules() {
+  return Array.from(document.querySelectorAll('.rule-row'))
+    .map((row) => ({
+      regex: row.querySelector('.rule-regex').value.trim(),
+      description: row.querySelector('.rule-description').value.trim(),
+    }))
+    .filter((r) => r.regex !== '');
+}
+
+/**
  * Loads settings from storage and updates the UI
  */
 async function loadSettings() {
@@ -50,7 +129,15 @@ async function loadSettings() {
     console_log('Loaded settings:', settings);
 
     document.getElementById('autoSendEmail').checked = settings.autoSendEmail;
-    document.getElementById('confirmRegex').value = settings.confirmRegex;
+
+    if (
+      Array.isArray(settings.confirmRules) &&
+      settings.confirmRules.length > 0
+    ) {
+      renderRules(settings.confirmRules);
+    } else {
+      renderRules([]);
+    }
   } catch (error) {
     console_error('Error loading settings:', error);
     showStatus('Error loading settings', 'error');
@@ -62,23 +149,21 @@ async function loadSettings() {
  */
 async function saveSettings() {
   const autoSendEmail = document.getElementById('autoSendEmail').checked;
-  const confirmRegex = document.getElementById('confirmRegex').value.trim();
+  const confirmRules = collectRules();
 
-  // Validate regex before saving
-  const validation = validateRegex(confirmRegex);
-  if (!validation.valid) {
-    showStatus(
-      `Invalid regular expression: ${validation.error}`,
-      'error',
-      5000
-    );
-    return;
+  for (const rule of confirmRules) {
+    const validation = validateRegex(rule.regex);
+    if (!validation.valid) {
+      showStatus(
+        `Invalid regular expression "${rule.regex}": ${validation.error}`,
+        'error',
+        5000
+      );
+      return;
+    }
   }
 
-  const settings = {
-    autoSendEmail,
-    confirmRegex,
-  };
+  const settings = { autoSendEmail, confirmRules };
 
   try {
     await messenger.storage.local.set(settings);
@@ -103,11 +188,9 @@ async function resetSettings() {
     await messenger.storage.local.set(DEFAULT_SETTINGS);
     console_log('Settings reset to defaults');
 
-    // Update UI
     document.getElementById('autoSendEmail').checked =
       DEFAULT_SETTINGS.autoSendEmail;
-    document.getElementById('confirmRegex').value =
-      DEFAULT_SETTINGS.confirmRegex;
+    renderRules(DEFAULT_SETTINGS.confirmRules);
 
     showStatus(
       messenger.i18n.getMessage('settingsReset') ||
@@ -146,20 +229,10 @@ function showStatus(message, type = 'success', duration = 3000) {
 document.addEventListener('DOMContentLoaded', async () => {
   await loadSettings();
 
-  // Set up event listeners
   document.getElementById('save').addEventListener('click', saveSettings);
   document.getElementById('reset').addEventListener('click', resetSettings);
-
-  // Real-time regex validation
-  const regexInput = document.getElementById('confirmRegex');
-  regexInput.addEventListener('input', () => {
-    const validation = validateRegex(regexInput.value.trim());
-    if (!validation.valid && regexInput.value.trim() !== '') {
-      regexInput.style.borderColor = 'red';
-      regexInput.title = `Invalid regex: ${validation.error}`;
-    } else {
-      regexInput.style.borderColor = 'green';
-      regexInput.title = '';
-    }
+  document.getElementById('addRule').addEventListener('click', () => {
+    document.getElementById('rulesList').appendChild(createRuleRow());
+    updateEmptyState();
   });
 });

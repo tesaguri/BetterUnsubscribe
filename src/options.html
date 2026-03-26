@@ -27,30 +27,37 @@
       </p>
     </div>
 
-    <!-- Confirmation Regex Section -->
+    <!-- Confirmation Rules Section -->
     <div class="option-section">
-      <h3 data-i18n="confirmRegexTitle">Require Confirmation</h3>
-      <p class="option-description" data-i18n="confirmRegexDescription">
-        Show a confirmation dialog before unsubscribing when the target address
-        matches this pattern.
+      <h3 data-i18n="confirmRulesTitle">Confirmation Rules</h3>
+      <p class="option-description" data-i18n="confirmRulesDescription">
+        Show a confirmation dialog before unsubscribing when the target URL or
+        sender matches a pattern. The warning message you enter here will appear
+        in that dialog, reminding you <em>why</em> you wanted to be careful
+        about this category.
       </p>
 
-      <div class="regex-container">
-        <label for="confirmRegex" data-i18n="confirmRegexLabel">
-          Confirmation pattern (regular expression):
-        </label>
-        <input
-          type="text"
-          id="confirmRegex"
-          placeholder="googlegroups-manage.*@googlegroups\.com|groups\.google\.com"
-        />
-
-        <p class="regex-help" data-i18n="confirmRegexHelp">
-          Leave empty to disable confirmation prompts.<br />The pattern is
-          case-<b>insensitive</b> and matches against the unsubscribe target
-          "Name &lt;sender@domain.com&gt;".
-        </p>
+      <div class="rules-header" id="rulesHeader" hidden>
+        <span data-i18n="confirmRulesPatternCol"
+          >Pattern (regex, case-insensitive)</span
+        >
+        <span data-i18n="confirmRulesWarningCol"
+          >Warning message (optional)</span
+        >
+        <span></span>
       </div>
+      <div id="rulesList"></div>
+      <p class="rules-empty" id="rulesEmpty" data-i18n="confirmRulesEmpty">
+        No rules. Confirmation dialogs are disabled.
+      </p>
+
+      <button id="addRule" class="button" data-i18n="addRuleButton">
+        + Add rule
+      </button>
+
+      <p class="regex-help" data-i18n="confirmRulesHelp">
+        Patterns match against the unsubscribe URL and sender address.
+      </p>
     </div>
 
     <!-- Save Button -->

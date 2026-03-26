@@ -112,6 +112,46 @@ body {
   padding-bottom: 5px; /* Space for scrollbar */
 }
 
+/* Confirmation section */
+
+.confirm-warning {
+  background-color: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 4px;
+  padding: 10px 12px;
+  color: #856404;
+  text-align: left;
+  line-height: 1.4;
+  margin: 0.5em;
+}
+
+.confirm-label {
+  font-size: 0.85em;
+  color: #5f6368;
+  margin-bottom: 4px;
+}
+
+#confirmTarget {
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+#confirmYesButton {
+  background-color: #28a745;
+}
+
+#confirmYesButton:hover {
+  background-color: #218838;
+}
+
+#confirmNoButton {
+  background-color: #6c757d;
+}
+
+#confirmNoButton:hover {
+  background-color: #5a6268;
+}
+
 /* Dark Theme Styles */
 @media (prefers-color-scheme: dark) {
   .button-dropdown ul {
@@ -131,5 +171,15 @@ body {
 
   #dropdownList button:focus-visible {
     outline-color: #66b3ff;
+  }
+
+  .confirm-warning {
+    background-color: #3a2e00;
+    border-color: #7a6000;
+    color: #ffd966;
+  }
+
+  .confirm-label {
+    color: #aaa;
   }
 }

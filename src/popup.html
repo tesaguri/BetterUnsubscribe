@@ -7,27 +7,56 @@
     <link rel="stylesheet" href="popup.css" />
   </head>
   <body>
-    <h3 data-i18n="unsubscribeQuestion">
-      Would you like to unsubscribe from this mailing list?
-    </h3>
-    <h4 id="nameAddress">"John Doe" &lt;John.Doe@example.com&gt;</h4>
+    <div id="unsubSection">
+      <h3 data-i18n="unsubscribeQuestion">
+        Would you like to unsubscribe from this mailing list?
+      </h3>
+      <h4 id="nameAddress">"John Doe" &lt;John.Doe@example.com&gt;</h4>
 
-    <button
-      id="unsubscribeButton"
-      class="button"
-      data-i18n="unsubscribeButton"
-      aria-label="Unsubscribe"
-    >
-      Unsubscribe
-    </button>
-    <button
-      id="cancelButton"
-      class="button"
-      data-i18n="cancelButton"
-      aria-label="Cancel"
-    >
-      Cancel
-    </button>
+      <button
+        id="unsubscribeButton"
+        class="button"
+        data-i18n="unsubscribeButton"
+        aria-label="Unsubscribe"
+      >
+        Unsubscribe
+      </button>
+      <button
+        id="cancelButton"
+        class="button"
+        data-i18n="cancelButton"
+        aria-label="Cancel"
+      >
+        Cancel
+      </button>
+    </div>
+
+    <div id="confirmSection" hidden>
+      <h3 data-i18n="confirmUnsubscribeTitle">Confirm Unsubscribe</h3>
+      <p id="confirmWarning" class="confirm-warning"></p>
+      <p class="confirm-label" data-i18n="confirmUnsubscribeMessage">
+        You are about to unsubscribe from:
+      </p>
+      <div class="code-container">
+        <code id="confirmTarget"></code>
+      </div>
+      <button
+        id="confirmYesButton"
+        class="button"
+        data-i18n="confirmButton"
+        aria-label="Yes, Unsubscribe"
+      >
+        Yes, Unsubscribe
+      </button>
+      <button
+        id="confirmNoButton"
+        class="button"
+        data-i18n="cancelButton"
+        aria-label="Cancel"
+      >
+        Cancel
+      </button>
+    </div>
 
     <div id="deleteDiv" class="button-delete button-dropdown">
       <button

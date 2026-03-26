@@ -9,6 +9,7 @@ body {
   padding: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  text-align: left;
 }
 
 .option-section h3 {
@@ -35,16 +36,6 @@ label input[type='checkbox'] {
   margin-right: 10px;
 }
 
-.regex-container {
-  margin-top: 15px;
-}
-
-.regex-container label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
 input[type='text'] {
   width: 100%;
   padding: 8px;
@@ -58,6 +49,64 @@ input[type='text'] {
   color: #5f6368;
   margin-top: 5px;
   line-height: 1.4;
+}
+
+/* Rules list */
+
+.rules-header,
+.rule-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.rules-header {
+  font-size: 0.85em;
+  color: #5f6368;
+  font-weight: bold;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 8px;
+}
+
+.rule-description {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.rules-empty {
+  font-style: italic;
+  font-size: 0.9em;
+  color: #5f6368;
+  margin: 4px 0 10px;
+}
+
+.button-remove {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #666;
+  font-size: 1.1em;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+.button-remove:hover {
+  background-color: #fee;
+  border-color: #e07b80;
+  color: #721c24;
+}
+
+#addRule {
+  background-color: #6c757d;
+  margin-left: 0;
+  margin-top: 4px;
+}
+
+#addRule:hover {
+  background-color: #545b62;
 }
 
 #status {
@@ -90,14 +139,32 @@ input[type='text'] {
   }
 
   .option-description,
-  .regex-help {
-    color: #fff;
+  .regex-help,
+  .rules-empty {
+    color: #aaa;
   }
 
   input[type='text'] {
     background-color: #2c2c2c;
     color: #fff;
     border-color: #444;
+  }
+
+  .rules-header {
+    color: #aaa;
+    border-bottom-color: #444;
+  }
+
+  .button-remove {
+    border-color: #555;
+    color: #aaa;
+    background-color: transparent;
+  }
+
+  .button-remove:hover {
+    background-color: #3a1a1c;
+    border-color: #5c2a2e;
+    color: #e07b80;
   }
 
   #status.success {
