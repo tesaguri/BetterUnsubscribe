@@ -131,6 +131,11 @@ body {
   margin-bottom: 4px;
 }
 
+#confirmAuthor {
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
 #confirmTarget {
   white-space: normal;
   overflow-wrap: break-word;

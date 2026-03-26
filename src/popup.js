@@ -220,8 +220,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       document.getElementById('confirmWarning').textContent =
         matchedRule.description ||
         messenger.i18n.getMessage('confirmUnsubscribeWarning');
-      document.getElementById('confirmTarget').textContent =
-        unsubAddress || author;
+      document.getElementById('confirmAuthor').textContent = author;
+      document.getElementById('confirmTarget').textContent = unsubAddress;
       document.getElementById('unsubSection').hidden = true;
       document.getElementById('confirmSection').hidden = false;
       return;

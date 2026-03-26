@@ -15,10 +15,6 @@
     "description": "Label for the cancel button",
     "message": "Cancel"
   },
-  "confirmButton": {
-    "description": "Label for confirm button",
-    "message": "Yes, Unsubscribe"
-  },
   "confirmRulesDescription": {
     "description": "Description for confirmation rules section",
     "message": "Show a confirmation dialog before unsubscribing when the target URL or sender matches a pattern. The warning message you enter here will appear in that dialog, reminding you why you wanted to be careful about this category."
@@ -29,7 +25,7 @@
   },
   "confirmRulesHelp": {
     "description": "Help text below the confirmation rules list",
-    "message": "Patterns match against the unsubscribe URL and sender address."
+    "message": "Patterns match against the unsubscribe URL and/or sender address."
   },
   "confirmRulesPatternCol": {
     "description": "Column header for the regex pattern column in the rules list",

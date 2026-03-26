@@ -45,8 +45,8 @@ const CONFIG = {
 
   // Regex patterns for i18n calls in JavaScript
   i18nCallPatterns: [
-    /\b(messenger|browser)\.i18n\.getMessage\(["']([^"']+)["']\)/g,
-    /\bi18n\.getMessage\(["']([^"']+)["']\)/g, // For imported i18n
+    /\b(messenger|browser)\.i18n\.getMessage\(\s*["']([^"']+)["']\s*\)/g,
+    /\bi18n\.getMessage\(\s*["']([^"']+)["']\s*\)/g, // For imported i18n
   ],
 };
 
@@ -542,7 +542,7 @@ describe('i18n Coverage Analysis', () => {
           '\n  This might be intentional (e.g., manifest.json usage) or indicate dead code.'
       );
       console.warn(unusedKeys);
-      fail();
+      expect(false).toBe(true);
     }
   });
 });
