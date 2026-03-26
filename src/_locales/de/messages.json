@@ -1,7 +1,55 @@
 {
+  "addRuleButton": {
+    "description": "Button zum Hinzufügen einer neuen Bestätigungsregel",
+    "message": "+ Regel hinzufügen"
+  },
+  "autoSendEmailHelp": {
+    "description": "Hilfetext für die automatische E-Mail-Versendung",
+    "message": "Wenn deaktiviert (Standard), wird ein Fenster zum Überprüfen geöffnet, bevor die E-Mail gesendet wird. Wenn aktiviert, wird die Abmelde-E-Mail automatisch ohne Überprüfung gesendet."
+  },
+  "autoSendEmailLabel": {
+    "description": "Bezeichnung für die Checkbox zum automatischen Senden",
+    "message": "Abmelde-E-Mails automatisch senden"
+  },
   "cancelButton": {
     "description": "Bezeichnung für den Abbrechen-Button",
     "message": "Abbrechen"
+  },
+  "confirmRulesDescription": {
+    "description": "Beschreibung für den Bereich der Bestätigungsregeln",
+    "message": "Zeigt einen Bestätigungsdialog vor dem Abbestellen an, wenn die Ziel-URL oder der Absender einem Muster entspricht. Die hier eingegebene Warnmeldung erscheint in diesem Dialog."
+  },
+  "confirmRulesEmpty": {
+    "description": "Text, wenn keine Regeln vorhanden sind",
+    "message": "Keine Regeln. Bestätigungsdialoge sind deaktiviert."
+  },
+  "confirmRulesHelp": {
+    "description": "Hilfetext unter der Regelliste",
+    "message": "Muster werden mit der Abmelde-URL und/oder der Absenderadresse abgeglichen."
+  },
+  "confirmRulesPatternCol": {
+    "description": "Spaltenüberschrift für das Regex-Muster",
+    "message": "Muster (Regex, ohne Groß-/Kleinschreibung)"
+  },
+  "confirmRulesTitle": {
+    "description": "Titel des Bestätigungsregel-Bereichs",
+    "message": "Bestätigungsregeln"
+  },
+  "confirmRulesWarningCol": {
+    "description": "Spaltenüberschrift für die Warnmeldung",
+    "message": "Warnmeldung (optional)"
+  },
+  "confirmUnsubscribeMessage": {
+    "description": "Text im Bestätigungsdialog",
+    "message": "Sie sind dabei, sich abzumelden von:"
+  },
+  "confirmUnsubscribeTitle": {
+    "description": "Titel des Bestätigungsdialogs",
+    "message": "Abmeldung bestätigen"
+  },
+  "confirmUnsubscribeWarning": {
+    "description": "Fallback-Warnung",
+    "message": "Diese Adresse entspricht einer Ihrer Regeln. Möchten Sie wirklich fortfahren?"
   },
   "deleteAllAddrButton": {
     "description": "Bezeichnung für den Button zum Löschen aller E-Mails von einer Adresse",
@@ -39,6 +87,10 @@
     "description": "Details für einen Web-Link",
     "message": "Wenn Sie auf \"Abbestellen\" klicken, wird ein Browserfenster geöffnet und die folgende URL besucht:"
   },
+  "emailBehaviorTitle": {
+    "description": "Titel für den Bereich E-Mail-Verhalten",
+    "message": "Verhalten beim Abbestellen per E-Mail"
+  },
   "extensionDescription": {
     "description": "Die Beschreibung der Thunderbird MailExtension",
     "message": "Erleichtert das Abbestellen von Mailinglisten."
@@ -46,6 +98,26 @@
   "extensionName": {
     "description": "Der Name der Thunderbird MailExtension",
     "message": "BetterUnsubscribe"
+  },
+  "optionsTitle": {
+    "description": "Titel der Optionsseite",
+    "message": "BetterUnsubscribe Einstellungen"
+  },
+  "resetButton": {
+    "description": "Bezeichnung für den Zurücksetzen-Button",
+    "message": "Auf Standard zurücksetzen"
+  },
+  "saveButton": {
+    "description": "Bezeichnung für den Speichern-Button",
+    "message": "Speichern"
+  },
+  "settingsReset": {
+    "description": "Meldung beim Zurücksetzen",
+    "message": "Einstellungen wurden zurückgesetzt"
+  },
+  "settingsSaved": {
+    "description": "Meldung beim Speichern",
+    "message": "Einstellungen erfolgreich gespeichert!"
   },
   "statusTextDeleteError": {
     "description": "Status-Text, wenn das Löschen der E-Mail(s) fehlschlägt",
@@ -68,8 +140,8 @@
     "message": "Fehler"
   },
   "statusTextWorking": {
-    "description": "Status-Text für den Arbeitszustand",
-    "message": "Arbeitet..."
+    "description": "Status-Text für laufende Arbeit",
+    "message": "Wird bearbeitet..."
   },
   "unsubscribeButton": {
     "description": "Bezeichnung für den Abbestell-Button",
