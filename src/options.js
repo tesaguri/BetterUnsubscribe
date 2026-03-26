@@ -1,7 +1,7 @@
 /**
  * Default settings for BetterUnsubscribe
  */
-const DEFAULT_SETTINGS = {
+export const DEFAULT_SETTINGS = {
   autoSendEmail: false, // Don't automatically send emails by default
   confirmRegex: '', // No confirmation regex by default
 };

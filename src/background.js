@@ -1,3 +1,5 @@
+import { DEFAULT_SETTINGS } from './options';
+
 /**
  * Map to store functions for different unsubscribe actions associated with message IDs
  * @type {Map<messenger.messages.MessageId,UnsubMethod|null>} */
@@ -659,8 +661,11 @@ class UnsubMail extends UnsubMethod {
    * Executes the unsubscribe action by sending an email message.
    *
    * Opens a compose window using the Thunderbird Compose API,
-   * pre-filled with the standard "unsubscribe" subject and body,
-   * and sends the message immediately.
+   * pre-filled with the standard "unsubscribe" subject and body.
+   *
+   * If the user's settings enable automatic sending, the message is
+   * sent immediately once the compose window becomes sendable.
+   * Otherwise, the compose window is left open for user review.
    *
    * The target address and optional subject line are extracted from
    * the `mailto:` URL supplied in the `List-Unsubscribe` header.
@@ -689,28 +694,33 @@ class UnsubMail extends UnsubMethod {
 
     const composeTab = await messenger.compose.beginNew(details);
 
-    // Wait until Thunderbird says this compose window can actually send.
-    for (let i = 0; i < 30; i++) {
-      // 3 seconds
-      const state = await messenger.compose.getComposeState(composeTab.id);
-      if (state?.canSendNow) {
-        break;
+    const settings = await messenger.storage.local.get(DEFAULT_SETTINGS);
+    console_log('Loaded settings:', settings);
+
+    let state;
+    if (settings.autoSendEmail === true) {
+      // Wait until Thunderbird says this compose window can actually send.
+      for (let i = 0; i < 30; i++) {
+        // 3 seconds
+        state = await messenger.compose.getComposeState(composeTab.id);
+        if (state?.canSendNow) {
+          break;
+        }
+        await new Promise((resolve) => setTimeout(resolve, 100));
       }
-      await new Promise((resolve) => setTimeout(resolve, 100));
-    }
 
-    const state = await messenger.compose.getComposeState(composeTab.id);
-    if (!state?.canSendNow) {
-      throw new Error('Compose window did not become sendable.');
-    }
+      if (!state?.canSendNow) {
+        throw new Error('Compose window did not become sendable.');
+      }
 
-    const sendMessageResult = await messenger.compose.sendMessage(
-      composeTab.id,
-      { mode: 'sendNow' }
-    );
+      const sendMessageResult = await messenger.compose.sendMessage(
+        composeTab.id,
+        { mode: 'sendNow' }
+      );
 
-    if (typeof sendMessageResult.headerMessageId == 'undefined') {
-      throw new Error('Sent message is undefined');
+      if (typeof sendMessageResult.headerMessageId == 'undefined') {
+        throw new Error('Message send did not return a headerMessageId.');
+      }
     }
   }
 
