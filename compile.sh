@@ -76,9 +76,6 @@ mkdir -p "$BUILD_DIR"
 
 cd "./src/"
 
-# Define the list of files and directories to include, relative to ./src
-FILES="manifest.json _locales icons background.js popup.html popup.js i18n.js styles.css"
-
 # Define the archive output path using the build directory variable
 OUTPUT_FILE="../$BUILD_DIR/BetterUnsubscribe-$VERSION.xpi"
 
@@ -92,8 +89,8 @@ if [ "$ARCHIVER" = "zip" ]; then
         exit 1
     fi
 
-    # Change to the src directory to keep paths relative
-    zip -r -9 "$OUTPUT_FILE" $FILES
+    # Add all files from ./src recursively
+    zip -r -9 "$OUTPUT_FILE" .
 
 elif [ "$ARCHIVER" = "7z" ]; then
     echo "Using 7z to create the archive."
@@ -104,7 +101,8 @@ elif [ "$ARCHIVER" = "7z" ]; then
         exit 1
     fi
 
-    7z a -tzip -mx=9 "$OUTPUT_FILE" $FILES
+    # Add all files from ./src recursively
+    7z a -tzip -mx=9 "$OUTPUT_FILE" *
 fi
 
 echo "Archive created successfully at $OUTPUT_FILE"

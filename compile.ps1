@@ -53,41 +53,13 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 # Create the ZIP archive
 $zip = [System.IO.Compression.ZipFile]::Open($zipFilePath, [System.IO.Compression.ZipArchiveMode]::Create)
 
-# List of files to include in the ZIP
-$files = @(
-    "./src/manifest.json",
-    "./src/_locales",
-    "./src/icons",
-    "./src/background.js",
-    "./src/popup.html",
-    "./src/popup.js",
-    "./src/i18n.js",
-    "./src/styles.css"
-)
-
-# Iterate through each file and add it to the ZIP
-foreach ($file in $files)
+# Add all files from ./src into the root of the ZIP (no "src/" prefix)
+$allFiles = Get-ChildItem -Path $workingDir.FullName -Recurse -File
+foreach ($file in $allFiles)
 {
-    $fileObject = Get-Item $file
-    # Calculate the relative path inside the ZIP archive
-    $relativePath = $fileObject.Name #$fileObject.FullName.Substring($workingDir.FullName.Length + 1) -replace '\\', '/'
+    $relativePath = $file.FullName.Substring($workingDir.FullName.Length + 1) -replace '\\', '/'
     Write-Host "Adding: $relativePath"
-
-    if ($fileObject.PSIsContainer)
-    {
-        # Add all files inside the directory to the ZIP
-        $directoryFiles = Get-ChildItem -Path $fileObject.FullName -Recurse -File
-        foreach ($dirFile in $directoryFiles)
-        {
-            $relativeDirFilePath = $dirFile.FullName.Substring($workingDir.FullName.Length + 1) -replace '\\', '/'
-            [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip, $dirFile.FullName, $relativeDirFilePath)
-        }
-    }
-    else
-    {
-        # Add the single file to the ZIP
-        [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip, $fileObject.FullName, $relativePath)
-    }
+    [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip, $file.FullName, $relativePath)
 }
 
 # Release the ZIP file

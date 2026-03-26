@@ -54,12 +54,6 @@ You can download the latest version of BetterUnsubscribe [here](https://github.c
    - **Windows (with .NET)**: Run `compile.ps1` (requires PowerShell and .NET).
    - **Windows (with 7z/zip)**: Run `compile-z.ps1` (requires PowerShell and 7z or zip installed).
 
-You can also compile the project using:
-
-```bash
-npm run compile
-```
-
 ## Installation Instructions
 
 1. Open **Thunderbird**.
