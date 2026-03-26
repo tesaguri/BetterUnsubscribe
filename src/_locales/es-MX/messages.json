@@ -1,7 +1,55 @@
 {
+  "addRuleButton": {
+    "description": "Botón para agregar una nueva regla de confirmación",
+    "message": "+ Agregar regla"
+  },
+  "autoSendEmailHelp": {
+    "description": "Texto de ayuda para la opción de envío automático de correos",
+    "message": "Cuando está desactivado (predeterminado), se abrirá una ventana de redacción para que revises el correo antes de enviarlo. Cuando está activado, el correo para darse de baja se enviará automáticamente sin revisión."
+  },
+  "autoSendEmailLabel": {
+    "description": "Etiqueta para la casilla de envío automático de correos",
+    "message": "Enviar automáticamente los correos para darse de baja"
+  },
   "cancelButton": {
     "description": "Etiqueta para el botón de cancelar",
     "message": "Cancelar"
+  },
+  "confirmRulesDescription": {
+    "description": "Descripción de la sección de reglas de confirmación",
+    "message": "Muestra un cuadro de confirmación antes de darte de baja cuando la URL de destino o el remitente coinciden con un patrón. El mensaje de advertencia que ingreses aquí aparecerá en ese cuadro, recordándote por qué querías tener cuidado con esta categoría."
+  },
+  "confirmRulesEmpty": {
+    "description": "Texto que se muestra cuando no hay reglas de confirmación configuradas",
+    "message": "No hay reglas. Los cuadros de confirmación están desactivados."
+  },
+  "confirmRulesHelp": {
+    "description": "Texto de ayuda debajo de la lista de reglas",
+    "message": "Los patrones se comparan con la URL para darse de baja y/o la dirección del remitente."
+  },
+  "confirmRulesPatternCol": {
+    "description": "Encabezado de la columna del patrón regex en la lista de reglas",
+    "message": "Patrón (regex, sin distinguir mayúsculas de minúsculas)"
+  },
+  "confirmRulesTitle": {
+    "description": "Título de la sección de reglas de confirmación",
+    "message": "Reglas de confirmación"
+  },
+  "confirmRulesWarningCol": {
+    "description": "Encabezado de la columna del mensaje de advertencia",
+    "message": "Mensaje de advertencia (opcional)"
+  },
+  "confirmUnsubscribeMessage": {
+    "description": "Mensaje del cuadro de confirmación",
+    "message": "Estás a punto de darte de baja de:"
+  },
+  "confirmUnsubscribeTitle": {
+    "description": "Título del cuadro de confirmación",
+    "message": "Confirmar baja"
+  },
+  "confirmUnsubscribeWarning": {
+    "description": "Advertencia predeterminada en el cuadro de confirmación cuando no se definió un mensaje personalizado para la regla coincidente",
+    "message": "Esta dirección coincide con una de tus reglas de confirmación. ¿Seguro que quieres continuar?"
   },
   "deleteAllAddrButton": {
     "description": "Botón para eliminar todos los correos electrónicos de una dirección",
@@ -28,8 +76,8 @@
     "message": "Cuando haces clic en \"Darse de baja\", se redactará un correo electrónico a la siguiente dirección:"
   },
   "detailsTextNone": {
-    "description": "Details text for when no method is found",
-    "message": "No se encontró ningún método para cancelar la suscripción."
+    "description": "Texto de detalles cuando no se encuentra ningún método",
+    "message": "No se encontró ningún método para darse de baja."
   },
   "detailsTextPost": {
     "description": "Detalles para una solicitud POST",
@@ -39,13 +87,37 @@
     "description": "Detalles para un enlace web",
     "message": "Cuando haces clic en \"Darse de baja\", se abrirá una ventana del navegador y visitará la siguiente URL:"
   },
+  "emailBehaviorTitle": {
+    "description": "Título de la sección del comportamiento del correo para darse de baja",
+    "message": "Comportamiento del correo para darse de baja"
+  },
   "extensionDescription": {
-    "description": "La descripción de la Extensión de Thunderbird",
-    "message": "Esta extensión facilita la desuscripción de listas de correo."
+    "description": "La descripción de la extensión de Thunderbird",
+    "message": "Facilita darse de baja de listas de correo."
   },
   "extensionName": {
-    "description": "El nombre de la Extensión de Thunderbird",
-    "message": "MejorDarse de baja"
+    "description": "El nombre de la extensión de Thunderbird",
+    "message": "BetterUnsubscribe"
+  },
+  "optionsTitle": {
+    "description": "Título de la página de opciones",
+    "message": "Opciones de BetterUnsubscribe"
+  },
+  "resetButton": {
+    "description": "Etiqueta para el botón de restablecer",
+    "message": "Restablecer valores predeterminados"
+  },
+  "saveButton": {
+    "description": "Etiqueta para el botón de guardar",
+    "message": "Guardar"
+  },
+  "settingsReset": {
+    "description": "Mensaje que se muestra cuando la configuración se restablece",
+    "message": "La configuración se restableció a los valores predeterminados"
+  },
+  "settingsSaved": {
+    "description": "Mensaje que se muestra cuando la configuración se guarda",
+    "message": "¡La configuración se guardó correctamente!"
   },
   "statusTextDeleteError": {
     "description": "Texto de estado cuando la eliminación de correos falla",
@@ -76,11 +148,11 @@
     "message": "Darse de baja"
   },
   "unsubscribeQuestion": {
-    "description": "Texto preguntando al usuario si quiere darse de baja",
-    "message": "¿Te gustaría desuscribirte de esta lista de correo?"
+    "description": "Texto que pregunta al usuario si quiere darse de baja",
+    "message": "¿Te gustaría darte de baja de esta lista de correo?"
   },
   "unsubscribeTitle": {
-    "description": "Título de la página de desuscripción",
+    "description": "Título de la página para darse de baja",
     "message": "Darse de baja"
   }
 }
