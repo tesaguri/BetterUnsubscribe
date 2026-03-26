@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title data-i18n="optionsTitle">BetterUnsubscribe Options</title>
+    <link rel="stylesheet" href="common.css" />
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <h2 data-i18n="optionsTitle">BetterUnsubscribe Options</h2>
+
+    <!-- Email Behavior Section -->
+    <div class="option-section">
+      <h3 data-i18n="emailBehaviorTitle">Email Unsubscribe Behavior</h3>
+      <label>
+        <input type="checkbox" id="autoSendEmail" />
+        <span data-i18n="autoSendEmailLabel"
+          >Automatically send unsubscribe emails</span
+        >
+      </label>
+
+      <p class="option-description" data-i18n="autoSendEmailHelp">
+        When disabled (default), a compose window will open for you to review
+        before sending.<br />
+        When enabled, the unsubscribe email will be sent automatically without
+        review.
+      </p>
+    </div>
+
+    <!-- Confirmation Regex Section -->
+    <div class="option-section">
+      <h3 data-i18n="confirmRegexTitle">Require Confirmation</h3>
+      <p class="option-description" data-i18n="confirmRegexDescription">
+        Show a confirmation dialog before unsubscribing when the target address
+        matches this pattern.
+      </p>
+
+      <div class="regex-container">
+        <label for="confirmRegex" data-i18n="confirmRegexLabel">
+          Confirmation pattern (regular expression):
+        </label>
+        <input
+          type="text"
+          id="confirmRegex"
+          placeholder="googlegroups-manage.*@googlegroups\.com|groups\.google\.com"
+        />
+
+        <p class="regex-help" data-i18n="confirmRegexHelp">
+          Leave empty to disable confirmation prompts.<br />The pattern is
+          case-<b>insensitive</b> and matches against the unsubscribe target
+          "Name &lt;sender@domain.com&gt;".
+        </p>
+      </div>
+    </div>
+
+    <!-- Save Button -->
+    <div class="button-container">
+      <button id="save" class="button" data-i18n="saveButton">Save</button>
+      <button id="reset" class="button" data-i18n="resetButton">
+        Reset to Defaults
+      </button>
+    </div>
+
+    <!-- Status Message -->
+    <div id="status" role="status"></div>
+
+    <script src="i18n.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

@@ -1,49 +1,7 @@
-/* Base Styles */
 body {
   width: 450px;
   margin: 1em;
-  font-family: 'Segoe UI', sans-serif;
-  font-size: 14px;
-  text-align: center;
-  background-color: #f0f0f0;
-  color: #1a1a1a;
   overflow: hidden;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 600;
-  overflow-wrap: break-word;
-  color: #1a1a1a;
-}
-
-p {
-  color: #5f6368;
-}
-
-.button {
-  padding: 0.6em 1em;
-  margin: 0.5em;
-  cursor: pointer;
-  border: none;
-  border-radius: 4px;
-  display: inline-block;
-  vertical-align: middle;
-  transition:
-    background-color 0.2s ease,
-    box-shadow 0.2s ease;
-  background-color: #0078d7;
-  color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.button:hover {
-  background-color: #005a9e;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #unsubscribeButton {
@@ -154,60 +112,8 @@ p {
   padding-bottom: 5px; /* Space for scrollbar */
 }
 
-/* Code Container Styles */
-.code-container {
-  max-width: 100%;
-  overflow-x: auto;
-  border-radius: 4px;
-  box-sizing: border-box;
-  background-color: #f8f9fa;
-  border: 1px solid #dcdcdc;
-}
-
-code {
-  margin: 1em;
-  display: block;
-  white-space: pre;
-  max-width: 100%;
-  color: #212529;
-}
-
-.details {
-  width: 100%;
-  box-sizing: border-box;
-  text-align: left;
-}
-
 /* Dark Theme Styles */
 @media (prefers-color-scheme: dark) {
-  body {
-    background-color: #333;
-    color: #fff;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  summary {
-    color: #fff;
-  }
-
-  p {
-    color: #fff;
-  }
-
-  .button {
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
-  }
-
-  .button:hover {
-    background-color: #444;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-  }
-
   .button-dropdown ul {
     background-color: #2c2c2c;
     border: 1px solid #444;
@@ -225,14 +131,5 @@ code {
 
   #dropdownList button:focus-visible {
     outline-color: #66b3ff;
-  }
-
-  .code-container {
-    background-color: #2c2c2c;
-    border: 1px solid #444;
-  }
-
-  code {
-    color: #fff;
   }
 }
