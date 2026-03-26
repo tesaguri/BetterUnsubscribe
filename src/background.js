@@ -993,7 +993,7 @@ async function collectMessageIdsToDelete(messageFromPopup) {
     const messages = getAllMessages();
 
     for await (let message of messages) {
-      if (message.author.trim().toLowerCase().includes(atDomain)) {
+      if (message.author.toLowerCase().includes(atDomain)) {
         messageIds.push(message.id);
       }
     }
