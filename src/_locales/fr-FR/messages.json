@@ -23,10 +23,6 @@
     "description": "Libellé pour le bouton de suppression du courriel actuel",
     "message": "Seulement celui-ci"
   },
-  "detailsSummary": {
-    "description": "Menu déroulant pour plus de détails",
-    "message": "Plus de détails"
-  },
   "detailsTextEmail": {
     "description": "Détails pour un courriel",
     "message": "Lorsque vous cliquez sur \"Se désabonner\", un courriel sera rédigé à l'adresse suivante :"
@@ -77,10 +73,6 @@
   },
   "unsubscribeButton": {
     "description": "Libellé pour le bouton de désabonnement",
-    "message": "Se désabonner"
-  },
-  "unsubscribeHeader": {
-    "description": "En-tête de la page de désabonnement",
     "message": "Se désabonner"
   },
   "unsubscribeQuestion": {

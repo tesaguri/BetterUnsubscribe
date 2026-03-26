@@ -23,10 +23,6 @@
     "description": "Bezeichnung für den Button zum Löschen nur der aktuellen E-Mail",
     "message": "Nur diese"
   },
-  "detailsSummary": {
-    "description": "Mehr Details im Drop-Down",
-    "message": "Weitere Details"
-  },
   "detailsTextEmail": {
     "description": "Details für eine E-Mail",
     "message": "Wenn Sie auf \"Abbestellen\" klicken, wird eine E-Mail an die folgende Adresse erstellt:"
@@ -77,10 +73,6 @@
   },
   "unsubscribeButton": {
     "description": "Bezeichnung für den Abbestell-Button",
-    "message": "Abbestellen"
-  },
-  "unsubscribeHeader": {
-    "description": "Überschrift der Abbestellseite",
     "message": "Abbestellen"
   },
   "unsubscribeQuestion": {

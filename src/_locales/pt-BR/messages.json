@@ -23,10 +23,6 @@
     "description": "Rótulo para o botão de excluir apenas o e-mail atual",
     "message": "Somente este"
   },
-  "detailsSummary": {
-    "description": "Menu suspenso de Mais Detalhes",
-    "message": "Mais detalhes"
-  },
   "detailsTextEmail": {
     "description": "Detalhes para um e-mail",
     "message": "Quando você clicar em \"Cancelar Inscrição\", um e-mail será redigido para o seguinte endereço:"
@@ -77,10 +73,6 @@
   },
   "unsubscribeButton": {
     "description": "Rótulo do botão de cancelamento de inscrição",
-    "message": "Cancelar Inscrição"
-  },
-  "unsubscribeHeader": {
-    "description": "Cabeçalho da página de cancelamento de inscrição",
     "message": "Cancelar Inscrição"
   },
   "unsubscribeQuestion": {

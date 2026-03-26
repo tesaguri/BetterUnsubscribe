@@ -190,6 +190,33 @@ function extractI18nKeysFromJS(filePath) {
 }
 
 /**
+ * Extract i18n keys from manifest.json
+ *
+ * Matches patterns like:
+ * - __MSG_key__
+ *
+ * @param {string} filePath - Path to JavaScript file
+ * @returns {Set<string>} Set of i18n keys found in the file
+ */
+function extractI18nKeysFromJSON(filePath) {
+  const content = fs.readFileSync(filePath, 'utf8');
+  const keys = new Set();
+
+  let match;
+  const regex = /__MSG_(.+)__/g;
+
+  while ((match = regex.exec(content)) !== null) {
+    const key = match[1].trim();
+
+    if (key) {
+      keys.add(key);
+    }
+  }
+
+  return keys;
+}
+
+/**
  * Validate a message object structure
  *
  * Each message should have:
@@ -233,6 +260,7 @@ const baseMessages = loadBaseLocaleMessages();
 const requiredKeys = Object.keys(baseMessages).sort();
 const htmlFiles = getFilesByExtension(CONFIG.patterns.html);
 const jsFiles = getFilesByExtension(CONFIG.patterns.js);
+const manifestFile = path.join(__dirname, '..', CONFIG.srcDir, 'manifest.json');
 
 /**
  * Test Suite 1: Locale Message File Validation
@@ -400,6 +428,20 @@ describe('JavaScript Files i18n Validation', () => {
         }
       });
 
+      test('manifest.json should only reference valid i18n keys', () => {
+        const invalidKeys = [...extractI18nKeysFromJSON(manifestFile)].filter(
+          (key) => !requiredKeys.includes(key)
+        );
+        console.log(invalidKeys);
+        if (invalidKeys.length > 0) {
+          throw new Error(
+            `Found ${invalidKeys.length} invalid i18n key(s):\n` +
+              invalidKeys.map((k) => `  - "${k}"`).join('\n') +
+              '\n\nThese keys are not defined in the base locale messages.json'
+          );
+        }
+      });
+
       test('should have at least one i18n call if JS generates text', () => {
         // This is informational - some files might legitimately have no i18n
         if (i18nKeys.size === 0) {
@@ -435,8 +477,14 @@ describe('i18n Coverage Analysis', () => {
       keys.forEach((key) => usedInJS.add(key));
     });
 
+    const usedInManifest = extractI18nKeysFromJSON(manifestFile);
+
     // Find all used keys
-    const allUsedKeys = new Set([...usedInHTML, ...usedInJS]);
+    const allUsedKeys = new Set([
+      ...usedInHTML,
+      ...usedInJS,
+      ...usedInManifest,
+    ]);
 
     // Find unused keys
     const unusedKeys = requiredKeys.filter((key) => !allUsedKeys.has(key));
@@ -446,6 +494,7 @@ describe('i18n Coverage Analysis', () => {
     console.log(`Total defined keys: ${requiredKeys.length}`);
     console.log(`Keys used in HTML: ${usedInHTML.size}`);
     console.log(`Keys used in JS: ${usedInJS.size}`);
+    console.log(`Keys used in manifest.json: ${usedInManifest.size}`);
     console.log(`Total keys used: ${allUsedKeys.size}`);
     console.log(`Unused keys: ${unusedKeys.length}`);
 
@@ -479,6 +528,9 @@ describe('i18n Coverage Analysis', () => {
       keys.forEach((key) => allUsedKeys.add(key));
     });
 
+    const usedInManifest = extractI18nKeysFromJSON(manifestFile);
+    usedInManifest.forEach((key) => allUsedKeys.add(key));
+
     // Find unused keys
     const unusedKeys = requiredKeys.filter((key) => !allUsedKeys.has(key));
 
@@ -490,9 +542,7 @@ describe('i18n Coverage Analysis', () => {
           '\n  This might be intentional (e.g., manifest.json usage) or indicate dead code.'
       );
       console.warn(unusedKeys);
+      fail();
     }
-
-    // Test passes - this is just a warning
-    expect(true).toBe(true);
   });
 });

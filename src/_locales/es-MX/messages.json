@@ -23,10 +23,6 @@
     "description": "Etiqueta para el botón de eliminar solo el correo actual",
     "message": "Solo este"
   },
-  "detailsSummary": {
-    "description": "Desplegable de más detalles",
-    "message": "Más detalles"
-  },
   "detailsTextEmail": {
     "description": "Detalles para un correo electrónico",
     "message": "Cuando haces clic en \"Darse de baja\", se redactará un correo electrónico a la siguiente dirección:"
@@ -77,10 +73,6 @@
   },
   "unsubscribeButton": {
     "description": "Etiqueta para el botón de darse de baja",
-    "message": "Darse de baja"
-  },
-  "unsubscribeHeader": {
-    "description": "Encabezado de la página de desuscripción",
     "message": "Darse de baja"
   },
   "unsubscribeQuestion": {

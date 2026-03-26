@@ -23,10 +23,6 @@
     "description": "Etykieta przycisku do usunięcia tylko bieżącego e-maila",
     "message": "Tylko ten"
   },
-  "detailsSummary": {
-    "description": "Rozwijane Więcej szczegółów",
-    "message": "Więcej szczegółów"
-  },
   "detailsTextEmail": {
     "description": "Szczegóły dla wiadomości e-mail",
     "message": "Po kliknięciu \"Zrezygnuj\" zostanie utworzona wiadomość e-mail na poniższy adres:"
@@ -78,10 +74,6 @@
   "unsubscribeButton": {
     "description": "Etykieta przycisku rezygnacji z subskrypcji",
     "message": "Zrezygnuj"
-  },
-  "unsubscribeHeader": {
-    "description": "Nagłówek strony rezygnacji z subskrypcji",
-    "message": "Rezygnacja z subskrypcji"
   },
   "unsubscribeQuestion": {
     "description": "Tekst pytający użytkownika, czy chce zrezygnować z subskrypcji",
