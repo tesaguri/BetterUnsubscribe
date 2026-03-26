@@ -29,6 +29,63 @@
       >
         Cancel
       </button>
+
+      <span id="deleteDiv" class="button-delete button-dropdown">
+        <button
+          id="deleteButton"
+          class="button"
+          data-i18n="deleteButton"
+          aria-label="Delete"
+        >
+          Delete ▼
+        </button>
+        <div>
+          <ul id="dropdownList">
+            <li>
+              <button id="deleteOneButton">
+                <span class="label" data-i18n="deleteOneButton"
+                  >Delete just this</span
+                >
+              </button>
+            </li>
+            <li>
+              <button id="deleteAllNameAddrButton">
+                <span class="label" data-i18n="deleteAllNameAddrButton"
+                  >Delete all from name-addr</span
+                >
+                <span class="scroll-x"
+                  >"John Doe" &lt;John.Doe@example.com&gt;</span
+                >
+              </button>
+            </li>
+            <li>
+              <button id="deleteAllAddrButton">
+                <span class="label" data-i18n="deleteAllAddrButton"
+                  >Delete all from addr-spec</span
+                >
+                <span class="scroll-x">John.Doe@example.com</span>
+              </button>
+            </li>
+            <li>
+              <button id="deleteAllDomainButton">
+                <span class="label" data-i18n="deleteAllDomainButton"
+                  >Delete all from domain</span
+                >
+                <span class="scroll-x">example.com</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </span>
+
+      <h4 id="statusText" hidden role="status">abc</h4>
+
+      <div class="details">
+        <p id="detailsText">Details will appear here.</p>
+        <div id="dynamicCodeContainer" class="code-container" hidden="hidden">
+          <code id="dynamicCodeBlock">https://unsubscribable.example.com</code>
+        </div>
+      </div>
     </div>
 
     <div id="confirmSection" hidden>
@@ -56,63 +113,6 @@
       >
         Cancel
       </button>
-    </div>
-
-    <div id="deleteDiv" class="button-delete button-dropdown">
-      <button
-        id="deleteButton"
-        class="button"
-        data-i18n="deleteButton"
-        aria-label="Delete"
-      >
-        Delete ▼
-      </button>
-      <div>
-        <ul id="dropdownList">
-          <li>
-            <button id="deleteOneButton">
-              <span class="label" data-i18n="deleteOneButton"
-                >Delete just this</span
-              >
-            </button>
-          </li>
-          <li>
-            <button id="deleteAllNameAddrButton">
-              <span class="label" data-i18n="deleteAllNameAddrButton"
-                >Delete all from name-addr</span
-              >
-              <span class="scroll-x"
-                >"John Doe" &lt;John.Doe@example.com&gt;</span
-              >
-            </button>
-          </li>
-          <li>
-            <button id="deleteAllAddrButton">
-              <span class="label" data-i18n="deleteAllAddrButton"
-                >Delete all from addr-spec</span
-              >
-              <span class="scroll-x">John.Doe@example.com</span>
-            </button>
-          </li>
-          <li>
-            <button id="deleteAllDomainButton">
-              <span class="label" data-i18n="deleteAllDomainButton"
-                >Delete all from domain</span
-              >
-              <span class="scroll-x">example.com</span>
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <h4 id="statusText" hidden role="status">abc</h4>
-
-    <div class="details">
-      <p id="detailsText">Details will appear here.</p>
-      <div id="dynamicCodeContainer" class="code-container" hidden="hidden">
-        <code id="dynamicCodeBlock">https://unsubscribable.example.com</code>
-      </div>
     </div>
 
     <script src="i18n.js"></script>
