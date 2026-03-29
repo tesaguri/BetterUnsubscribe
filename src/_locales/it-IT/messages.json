@@ -1,7 +1,55 @@
 {
+  "addRuleButton": {
+    "description": "Pulsante per aggiungere una nuova regola di conferma",
+    "message": "+ Aggiungi regola"
+  },
+  "autoSendEmailHelp": {
+    "description": "Testo di aiuto per l'opzione di invio automatico dell'email",
+    "message": "Se disabilitato (impostazione predefinita), si aprirà una finestra di composizione per la revisione prima dell'invio. Se abilitato, l'email di annullamento dell'iscrizione verrà inviata automaticamente senza revisione."
+  },
+  "autoSendEmailLabel": {
+    "description": "Etichetta per la casella di controllo dell'invio automatico dell'email",
+    "message": "Invia automaticamente le email di annullamento dell'iscrizione"
+  },
   "cancelButton": {
     "description": "Etichetta per il pulsante di annullamento",
     "message": "Annulla"
+  },
+  "confirmRulesDescription": {
+    "description": "Descrizione per la sezione delle regole di conferma",
+    "message": "Mostra una finestra di dialogo di conferma prima dell'annullamento dell'iscrizione quando l'URL di destinazione o il mittente corrisponde a un pattern. Il messaggio di avviso inserito qui apparirà in quella finestra, ricordandoti perché volevi prestare attenzione a questa categoria."
+  },
+  "confirmRulesEmpty": {
+    "description": "Testo mostrato quando non sono configurate regole di conferma",
+    "message": "Nessuna regola. Le finestre di dialogo di conferma sono disabilitate."
+  },
+  "confirmRulesHelp": {
+    "description": "Testo di aiuto sotto l'elenco delle regole di conferma",
+    "message": "I pattern corrispondono all'URL di annullamento dell'iscrizione e/o all'indirizzo del mittente."
+  },
+  "confirmRulesPatternCol": {
+    "description": "Intestazione della colonna per il pattern di espressione regolare nell'elenco delle regole",
+    "message": "Pattern (regex, senza distinzione tra maiuscole e minuscole)"
+  },
+  "confirmRulesTitle": {
+    "description": "Titolo per la sezione delle regole di conferma",
+    "message": "Regole di conferma"
+  },
+  "confirmRulesWarningCol": {
+    "description": "Intestazione della colonna per il messaggio di avviso nell'elenco delle regole",
+    "message": "Messaggio di avviso (opzionale)"
+  },
+  "confirmUnsubscribeMessage": {
+    "description": "Messaggio per la finestra di dialogo di conferma",
+    "message": "Stai per annullare l'iscrizione da:"
+  },
+  "confirmUnsubscribeTitle": {
+    "description": "Titolo per la finestra di dialogo di conferma",
+    "message": "Conferma annullamento iscrizione"
+  },
+  "confirmUnsubscribeWarning": {
+    "description": "Avviso di fallback nella finestra di dialogo di conferma quando non è stato impostato alcun messaggio personalizzato per la regola corrispondente",
+    "message": "Questo indirizzo corrisponde a una delle tue regole di conferma. Sei sicuro di voler continuare?"
   },
   "deleteAllAddrButton": {
     "description": "Pulsante per eliminare tutte le email da un indirizzo",
@@ -39,6 +87,10 @@
     "description": "Dettagli per un collegamento web",
     "message": "Quando fai clic su \"Disiscriviti\", si aprirà una finestra del browser e verrà visitato il seguente URL:"
   },
+  "emailBehaviorTitle": {
+    "description": "Titolo per la sezione del comportamento dell'email",
+    "message": "Comportamento di annullamento iscrizione email"
+  },
   "extensionDescription": {
     "description": "La descrizione dell'estensione Thunderbird",
     "message": "Questa estensione facilita la disiscrizione dalle mailing list."
@@ -46,6 +98,26 @@
   "extensionName": {
     "description": "Il nome dell'estensione Thunderbird",
     "message": "MiglioreDisiscrizione"
+  },
+  "optionsTitle": {
+    "description": "Titolo della pagina delle opzioni",
+    "message": "Opzioni BetterUnsubscribe"
+  },
+  "resetButton": {
+    "description": "Etichetta per il pulsante di ripristino",
+    "message": "Ripristina impostazioni predefinite"
+  },
+  "saveButton": {
+    "description": "Etichetta per il pulsante di salvataggio",
+    "message": "Salva"
+  },
+  "settingsReset": {
+    "description": "Messaggio mostrato quando le impostazioni vengono ripristinate",
+    "message": "Impostazioni ripristinate ai valori predefiniti"
+  },
+  "settingsSaved": {
+    "description": "Messaggio mostrato quando le impostazioni vengono salvate",
+    "message": "Impostazioni salvate con successo!"
   },
   "statusTextDeleteError": {
     "description": "Testo di stato per errore durante l'eliminazione delle email",

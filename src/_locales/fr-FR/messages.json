@@ -1,7 +1,55 @@
 {
+  "addRuleButton": {
+    "description": "Bouton pour ajouter une nouvelle règle de confirmation",
+    "message": "+ Ajouter une règle"
+  },
+  "autoSendEmailHelp": {
+    "description": "Texte d'aide pour l'option d'envoi automatique de courriel",
+    "message": "Lorsqu'il est désactivé (par défaut), une fenêtre de rédaction s'ouvrira pour révision avant l'envoi. Lorsqu'il est activé, le courriel de désabonnement sera envoyé automatiquement sans révision."
+  },
+  "autoSendEmailLabel": {
+    "description": "Libellé pour la case à cocher d'envoi automatique de courriel",
+    "message": "Envoyer automatiquement les courriels de désabonnement"
+  },
   "cancelButton": {
     "description": "Libellé pour le bouton d'annulation",
     "message": "Annuler"
+  },
+  "confirmRulesDescription": {
+    "description": "Description de la section des règles de confirmation",
+    "message": "Afficher une boîte de dialogue de confirmation avant le désabonnement lorsque l'URL cible ou l'expéditeur correspond à un modèle. Le message d'avertissement que vous entrez ici apparaîtra dans cette boîte de dialogue, vous rappelant pourquoi vous vouliez être prudent avec cette catégorie."
+  },
+  "confirmRulesEmpty": {
+    "description": "Texte affiché lorsqu'aucune règle de confirmation n'est configurée",
+    "message": "Aucune règle. Les boîtes de dialogue de confirmation sont désactivées."
+  },
+  "confirmRulesHelp": {
+    "description": "Texte d'aide sous la liste des règles de confirmation",
+    "message": "Les modèles correspondent à l'URL de désabonnement et/ou à l'adresse de l'expéditeur."
+  },
+  "confirmRulesPatternCol": {
+    "description": "En-tête de colonne pour le modèle d'expression régulière dans la liste des règles",
+    "message": "Modèle (regex, insensible à la casse)"
+  },
+  "confirmRulesTitle": {
+    "description": "Titre de la section des règles de confirmation",
+    "message": "Règles de confirmation"
+  },
+  "confirmRulesWarningCol": {
+    "description": "En-tête de colonne pour le message d'avertissement dans la liste des règles",
+    "message": "Message d'avertissement (optionnel)"
+  },
+  "confirmUnsubscribeMessage": {
+    "description": "Message de la boîte de dialogue de confirmation",
+    "message": "Vous êtes sur le point de vous désabonner de :"
+  },
+  "confirmUnsubscribeTitle": {
+    "description": "Titre de la boîte de dialogue de confirmation",
+    "message": "Confirmer le désabonnement"
+  },
+  "confirmUnsubscribeWarning": {
+    "description": "Avertissement de secours dans la boîte de dialogue de confirmation lorsqu'aucun message personnalisé n'a été défini pour la règle correspondante",
+    "message": "Cette adresse correspond à l'une de vos règles de confirmation. Êtes-vous sûr de vouloir continuer ?"
   },
   "deleteAllAddrButton": {
     "description": "Bouton pour supprimer tous les courriels d'une adresse",
@@ -39,6 +87,10 @@
     "description": "Détails pour un lien web",
     "message": "Lorsque vous cliquez sur \"Se désabonner\", une fenêtre du navigateur s'ouvrira et visitera l'URL suivante :"
   },
+  "emailBehaviorTitle": {
+    "description": "Titre de la section sur le comportement des courriels",
+    "message": "Comportement de désabonnement par courriel"
+  },
   "extensionDescription": {
     "description": "La description de l'extension Thunderbird",
     "message": "Cette extension facilite le désabonnement des listes de diffusion."
@@ -46,6 +98,26 @@
   "extensionName": {
     "description": "Le nom de l'extension Thunderbird",
     "message": "MeilleurDésabonnement"
+  },
+  "optionsTitle": {
+    "description": "Titre de la page des options",
+    "message": "Options de BetterUnsubscribe"
+  },
+  "resetButton": {
+    "description": "Libellé du bouton de réinitialisation",
+    "message": "Rétablir les paramètres par défaut"
+  },
+  "saveButton": {
+    "description": "Libellé du bouton d'enregistrement",
+    "message": "Enregistrer"
+  },
+  "settingsReset": {
+    "description": "Message affiché lors de la réinitialisation des paramètres",
+    "message": "Paramètres réinitialisés aux valeurs par défaut"
+  },
+  "settingsSaved": {
+    "description": "Message affiché lors de l'enregistrement des paramètres",
+    "message": "Paramètres enregistrés avec succès !"
   },
   "statusTextDeleteError": {
     "description": "Texte de statut en cas d'échec de suppression des courriels",
