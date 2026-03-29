@@ -65,7 +65,7 @@
   },
   "deleteButton": {
     "description": "Label for the delete button with a dropdown indicator",
-    "message": "Delete"
+    "message": "Delete ▼"
   },
   "deleteOneButton": {
     "description": "Button to delete only the current email",

@@ -49,7 +49,7 @@
   },
   "confirmUnsubscribeWarning": {
     "description": "Fallback-Warnung",
-    "message": "Diese Adresse entspricht einer Ihrer Regeln. Möchten Sie wirklich fortfahren?"
+    "message": "Diese Adresse entspricht einer Ihrer Bestätigungsregeln. Möchten Sie wirklich fortfahren?"
   },
   "deleteAllAddrButton": {
     "description": "Bezeichnung für den Button zum Löschen aller E-Mails von einer Adresse",

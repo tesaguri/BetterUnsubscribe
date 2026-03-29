@@ -97,7 +97,7 @@
   },
   "extensionName": {
     "description": "Le nom de l'extension Thunderbird",
-    "message": "MeilleurDésabonnement"
+    "message": "BetterUnsubscribe"
   },
   "optionsTitle": {
     "description": "Titre de la page des options",
