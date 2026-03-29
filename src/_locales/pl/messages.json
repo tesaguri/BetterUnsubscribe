@@ -1,7 +1,55 @@
 {
+  "addRuleButton": {
+    "description": "Przycisk do dodania nowej reguły potwierdzenia",
+    "message": "+ Dodaj regułę"
+  },
+  "autoSendEmailHelp": {
+    "description": "Tekst pomocy dla opcji automatycznego wysyłania e-maili",
+    "message": "Jeśli wyłączone (domyślnie), otworzy się okno tworzenia wiadomości do weryfikacji przed wysłaniem. Jeśli włączone, e-mail z rezygnacją z subskrypcji zostanie wysłany automatycznie bez weryfikacji."
+  },
+  "autoSendEmailLabel": {
+    "description": "Etykieta dla pola wyboru automatycznego wysyłania e-maili",
+    "message": "Automatycznie wysyłaj e-maile z rezygnacją z subskrypcji"
+  },
   "cancelButton": {
     "description": "Etykieta przycisku anulowania",
     "message": "Anuluj"
+  },
+  "confirmRulesDescription": {
+    "description": "Opis dla sekcji reguł potwierdzeń",
+    "message": "Pokaż okno dialogowe potwierdzenia przed rezygnacją z subskrypcji, gdy docelowy adres URL lub nadawca pasuje do wzorca. Wprowadzony tutaj komunikat ostrzegawczy pojawi się w tym oknie dialogowym, przypominając, dlaczego chciałeś zachować ostrożność w przypadku tej kategorii."
+  },
+  "confirmRulesEmpty": {
+    "description": "Tekst wyświetlany, gdy nie skonfigurowano żadnych reguł potwierdzeń",
+    "message": "Brak reguł. Okna dialogowe potwierdzenia są wyłączone."
+  },
+  "confirmRulesHelp": {
+    "description": "Tekst pomocy pod listą reguł potwierdzeń",
+    "message": "Wzorce pasują do adresu URL rezygnacji z subskrypcji i/lub adresu nadawcy."
+  },
+  "confirmRulesPatternCol": {
+    "description": "Nagłówek kolumny dla wzorca wyrażenia regularnego na liście reguł",
+    "message": "Wzorzec (regex, bez uwzględniania wielkości liter)"
+  },
+  "confirmRulesTitle": {
+    "description": "Tytuł dla sekcji reguł potwierdzeń",
+    "message": "Reguły potwierdzeń"
+  },
+  "confirmRulesWarningCol": {
+    "description": "Nagłówek kolumny dla komunikatu ostrzegawczego na liście reguł",
+    "message": "Komunikat ostrzegawczy (opcjonalnie)"
+  },
+  "confirmUnsubscribeMessage": {
+    "description": "Komunikat w oknie dialogowym potwierdzenia",
+    "message": "Zaraz zrezygnujesz z subskrypcji od:"
+  },
+  "confirmUnsubscribeTitle": {
+    "description": "Tytuł okna dialogowego potwierdzenia",
+    "message": "Potwierdź rezygnację z subskrypcji"
+  },
+  "confirmUnsubscribeWarning": {
+    "description": "Zastępcze ostrzeżenie w oknie dialogowym potwierdzenia, gdy nie ustawiono niestandardowego komunikatu dla dopasowanej reguły",
+    "message": "Ten adres pasuje do jednej z Twoich reguł potwierdzeń. Czy na pewno chcesz kontynuować?"
   },
   "deleteAllAddrButton": {
     "description": "Przycisk do usunięcia wszystkich e-maili z określonego adresu",
@@ -39,6 +87,10 @@
     "description": "Szczegóły dla linku internetowego",
     "message": "Po kliknięciu \"Zrezygnuj\" zostanie otwarte okno przeglądarki, które przejdzie do poniższego adresu URL:"
   },
+  "emailBehaviorTitle": {
+    "description": "Tytuł dla sekcji zachowania e-maila",
+    "message": "Zachowanie rezygnacji z e-maila"
+  },
   "extensionDescription": {
     "description": "Opis rozszerzenia Thunderbird MailExtension",
     "message": "Ułatwia rezygnację z subskrypcji list mailingowych."
@@ -46,6 +98,26 @@
   "extensionName": {
     "description": "Nazwa rozszerzenia Thunderbird MailExtension",
     "message": "BetterUnsubscribe"
+  },
+  "optionsTitle": {
+    "description": "Tytuł strony opcji",
+    "message": "Opcje BetterUnsubscribe"
+  },
+  "resetButton": {
+    "description": "Etykieta dla przycisku resetowania",
+    "message": "Przywróć ustawienia domyślne"
+  },
+  "saveButton": {
+    "description": "Etykieta dla przycisku zapisywania",
+    "message": "Zapisz"
+  },
+  "settingsReset": {
+    "description": "Komunikat wyświetlany po zresetowaniu ustawień",
+    "message": "Ustawienia przywrócone do domyślnych"
+  },
+  "settingsSaved": {
+    "description": "Komunikat wyświetlany po zapisaniu ustawień",
+    "message": "Ustawienia zostały pomyślnie zapisane!"
   },
   "statusTextDeleteError": {
     "description": "Tekst statusu, gdy usunięcie e-maila nie powiodło się",

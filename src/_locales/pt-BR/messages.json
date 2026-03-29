@@ -1,7 +1,55 @@
 {
+  "addRuleButton": {
+    "description": "Botão para adicionar uma nova regra de confirmação",
+    "message": "+ Adicionar regra"
+  },
+  "autoSendEmailHelp": {
+    "description": "Texto de ajuda para opção de envio automático de e-mail",
+    "message": "Quando desativado (padrão), uma janela de composição será aberta para revisão antes do envio. Quando ativado, o e-mail de cancelamento de inscrição será enviado automaticamente sem revisão."
+  },
+  "autoSendEmailLabel": {
+    "description": "Rótulo para caixa de seleção de envio automático de e-mail",
+    "message": "Enviar automaticamente e-mails de cancelamento de inscrição"
+  },
   "cancelButton": {
     "description": "Rótulo do botão de cancelar",
     "message": "Cancelar"
+  },
+  "confirmRulesDescription": {
+    "description": "Descrição para a seção de regras de confirmação",
+    "message": "Mostra uma caixa de diálogo de confirmação antes de cancelar a inscrição quando a URL de destino ou o remetente corresponder a um padrão. A mensagem de aviso inserida aqui aparecerá nessa caixa de diálogo, lembrando por que você queria ter cuidado com essa categoria."
+  },
+  "confirmRulesEmpty": {
+    "description": "Texto exibido quando não há regras de confirmação configuradas",
+    "message": "Nenhuma regra. As caixas de diálogo de confirmação estão desativadas."
+  },
+  "confirmRulesHelp": {
+    "description": "Texto de ajuda abaixo da lista de regras de confirmação",
+    "message": "Padrões comparados à URL de cancelamento de inscrição e/ou ao endereço do remetente."
+  },
+  "confirmRulesPatternCol": {
+    "description": "Cabeçalho da coluna para o padrão regex na lista de regras",
+    "message": "Padrão (regex, não diferencia maiúsculas de minúsculas)"
+  },
+  "confirmRulesTitle": {
+    "description": "Título para a seção de regras de confirmação",
+    "message": "Regras de Confirmação"
+  },
+  "confirmRulesWarningCol": {
+    "description": "Cabeçalho da coluna para a mensagem de aviso na lista de regras",
+    "message": "Mensagem de aviso (opcional)"
+  },
+  "confirmUnsubscribeMessage": {
+    "description": "Mensagem para caixa de diálogo de confirmação",
+    "message": "Você está prestes a cancelar a inscrição de:"
+  },
+  "confirmUnsubscribeTitle": {
+    "description": "Título da caixa de diálogo de confirmação",
+    "message": "Confirmar Cancelamento de Inscrição"
+  },
+  "confirmUnsubscribeWarning": {
+    "description": "Aviso substituto na caixa de diálogo de confirmação quando nenhuma mensagem personalizada foi definida para a regra correspondente",
+    "message": "Este endereço corresponde a uma de suas regras de confirmação. Tem certeza de que deseja continuar?"
   },
   "deleteAllAddrButton": {
     "description": "Botão para excluir todos os e-mails de um endereço",
@@ -39,6 +87,10 @@
     "description": "Detalhes para um link da Web",
     "message": "Quando você clicar em \"Cancelar Inscrição\", uma janela do navegador será aberta e visitará o seguinte URL:"
   },
+  "emailBehaviorTitle": {
+    "description": "Título para seção de comportamento de e-mail",
+    "message": "Comportamento de Cancelamento de E-mail"
+  },
   "extensionDescription": {
     "description": "A descrição da extensão do Thunderbird",
     "message": "Facilita o cancelamento de inscrições em listas de e-mails."
@@ -46,6 +98,26 @@
   "extensionName": {
     "description": "O nome da extensão do Thunderbird",
     "message": "BetterUnsubscribe"
+  },
+  "optionsTitle": {
+    "description": "Título da página de opções",
+    "message": "Opções do BetterUnsubscribe"
+  },
+  "resetButton": {
+    "description": "Rótulo para o botão de redefinir",
+    "message": "Restaurar Padrões"
+  },
+  "saveButton": {
+    "description": "Rótulo para o botão de salvar",
+    "message": "Salvar"
+  },
+  "settingsReset": {
+    "description": "Mensagem exibida quando as configurações são redefinidas",
+    "message": "Configurações restauradas para o padrão"
+  },
+  "settingsSaved": {
+    "description": "Mensagem exibida quando as configurações são salvas",
+    "message": "Configurações salvas com sucesso!"
   },
   "statusTextDeleteError": {
     "description": "Texto de status quando a exclusão de e-mails falha",
